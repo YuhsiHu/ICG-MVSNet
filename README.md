@@ -11,6 +11,16 @@
     <a href="https://www.tugraz.at/institute/icg/research/team-fraundorfer/people/friedrich-fraundorfer/" target='_blank'>Friedrich Fraundorfer</a>*
 </div>
 
+<br />
+
+<div align="center">
+
+![Publication](https://img.shields.io/badge/2025-ICME-2978b5)
+[![Paper](http://img.shields.io/badge/arxiv-arxiv.2503.21525-B31B1B?logo=arXiv&logoColor=green)](https://arxiv.org/abs/2503.21525)
+![Pytorch](https://img.shields.io/badge/PyTorch-ee4c2c?logo=pytorch&logoColor=white)
+
+</div>
+
 ##  📌 Introduction
 This repository contains the official implementation of **ICG-MVSNet: Learning Intra-view and Cross-view Relationships for Guidance in Multi-View Stereo**. 
 
