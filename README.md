@@ -133,11 +133,11 @@ bash scripts/dtu/test_dtu.sh exp_name
 
 2. Download the [ObsMask](http://roboimagedata2.compute.dtu.dk/data/MVS/SampleSet.zip) and [Points](http://roboimagedata2.compute.dtu.dk/data/MVS/Points.zip) of DTU GT point clouds from the official website and organize them as:
 
-    ```
-    dtu-evaluation/
+```
+evaluation/
     ├── ObsMask
     └── Points
-    ```
+```
 
 3. Result evaluation. Setup `Matlab` in command line mode, and run `bash scripts/dtu/matlab_quan_dtu.sh`. You can adjust the `num_at_once` config according to your machine's CPU and memory ceiling. After quantitative evaluation, you will get `[FUSION_METHOD]_quantitative/` and `[THISNAME].log` just store the quantitative results.
 
@@ -183,6 +183,7 @@ Our results on DTU and Tanks and Temples (T&T) Dataset are listed in the tables.
 | ------------------ | ------ | ------ | ------- | ----- | ---------- | ----- | ------- | ---------- | ----- |
 | Ours          | 65.53  | 81.73  | 68.92   | 56.59 | 66.10      | 64.86 | 64.41   | 62.33      | 59.26 |
 
+You can download point clouds [here](https://cloud.tugraz.at/index.php/s/bfC3ykYt7BszG8C).
 ## 🔗 Citation
 If you find this work useful in your research, please consider citing the following preprint:
 ```
