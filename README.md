@@ -79,7 +79,7 @@ blendedmvs/
 
 #### Tanks and Temples Dataset
 
-Download the intermediate and advanced subsets of [Tanks and Temples dataset](https://drive.google.com/file/d/1YArOJaX9WVLJh4757uE8AEREYkgszrCo/view) and unzip them. We use the camera parameters of short depth range version, you should unzip `short_range_caemeras_for_mvsnet.zip` and move `cams` to the corresponding scenarios manually.
+Download the intermediate and advanced subsets of Tanks and Temples dataset. We use the camera parameters of short depth range version, you can download processed data [here](https://drive.google.com/file/d/17mTgTzjPV1KsazabRIU0J3p0_ogufi5R/view?usp=sharing) and change `cams_1` to `cams`.
 
 ```
 tanksandtemples/
