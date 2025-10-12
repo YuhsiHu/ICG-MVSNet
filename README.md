@@ -185,15 +185,23 @@ Our results on DTU and Tanks and Temples (T&T) Dataset are listed in the tables.
 
 You can download point clouds [here](https://cloud.tugraz.at/index.php/s/bfC3ykYt7BszG8C).
 ## 🔗 Citation
-If you find this work useful in your research, please consider citing the following preprint:
+If you find this work useful in your research, please consider citing:
+```bibtex
+@inproceedings{hu2025icg,
+  title={ICG-MVSNet: Learning Intra-view and Cross-view Relationships for Guidance in Multi-View Stereo},
+  author={Hu, Yuxi and Zhang, Jun and Zhang, Zhe and Weilharter, Rafael and Rao, Yuchen and Chen, Kuangyi and Yuan, Runze and Fraundorfer, Friedrich},
+  booktitle={IEEE International Conference on Multimedia and Expo (ICME)},
+  year={2025}
+}
 ```
+<!-- ```bibtex
 @article{hu2025icg,
   title={ICG-MVSNet: Learning Intra-view and Cross-view Relationships for Guidance in Multi-View Stereo},
   author={Hu, Yuxi and Zhang, Jun and Zhang, Zhe and Weilharter, Rafael and Rao, Yuchen and Chen, Kuangyi and Yuan, Runze and Fraundorfer, Friedrich},
   journal={arXiv preprint arXiv:2503.21525},
   year={2025}
 }
-```
+``` -->
 
 ## ❤️ Acknowledgements
 This repository builds upon the great work of the following projects:
