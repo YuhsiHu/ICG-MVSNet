@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="ICG-MVSNet: Learning Intra-view and Cross-view Relationships for Guidance in Multi-View Stereo">
+  <!-- TODO: Write a compelling 150-160 character description of your research -->
+  <meta name="description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
+  <!-- TODO: Add 5-10 relevant keywords for your research area -->
+  <meta name="keywords" content="KEYWORD1, KEYWORD2, KEYWORD3, machine learning, computer vision, AI">
+  <meta name="author" content="Yuxi Hu, Jun Zhang, Zhe Zhang, Rafael Weilharter, Yuchen Rao, Kuangyi Chen, Runze Yuan, Friedrich Fraundorfer">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <!-- TODO: Replace with your institution or lab name -->
+  <meta property="og:site_name" content="Graz University of Technology, Peking University">
+  <meta property="og:title" content="ICG-MVSNet: Learning Intra-view and Cross-view Relationships for Guidance in Multi-View Stereo">
+  <meta property="og:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
+  <!-- TODO: Replace with your actual website URL -->
+  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
+  <!-- TODO: Create a 1200x630px preview image and update path -->
+  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="PAPER_TITLE - Research Preview">
+  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
+  <meta property="article:author" content="FIRST_AUTHOR_NAME">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="KEYWORD1">
+  <meta property="article:tag" content="KEYWORD2">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- TODO: Replace with your lab/institution Twitter handle -->
+  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
+  <!-- TODO: Replace with first author's Twitter handle -->
+  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
+  <!-- TODO: Same as paper title above -->
+  <meta name="twitter:title" content="PAPER_TITLE">
+  <!-- TODO: Same as description above -->
+  <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
+  <!-- TODO: Same as social preview image above -->
+  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="PAPER_TITLE">
+  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
+  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
+  <meta name="citation_publication_date" content="2024">
+  <meta name="citation_conference_title" content="CONFERENCE_NAME">
+  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+
+  <title>ICG-MVSNet: Learning Intra-view and Cross-view Relationships for Guidance in Multi-View Stereo</title>
+  
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+  
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+  
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "PAPER_TITLE",
+    "description": "BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "FIRST_AUTHOR_NAME",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "INSTITUTION_NAME"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "SECOND_AUTHOR_NAME",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "INSTITUTION_NAME"
+        }
+      }
+    ],
+    "datePublished": "2024-01-01",
+    "publisher": {
+      "@type": "Organization",
+      "name": "CONFERENCE_OR_JOURNAL_NAME"
+    },
+    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
+    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
+    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
+    "abstract": "FULL_ABSTRACT_TEXT_HERE",
+    "citation": "BIBTEX_CITATION_HERE",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "mainEntity": {
+      "@type": "WebPage",
+      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
+    },
+    "about": [
+      {
+        "@type": "Thing",
+        "name": "RESEARCH_AREA_1"
+      },
+      {
+        "@type": "Thing", 
+        "name": "RESEARCH_AREA_2"
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Website/Organization Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "INSTITUTION_OR_LAB_NAME",
+    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
+    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
+    "sameAs": [
+      "https://twitter.com/YOUR_TWITTER_HANDLE",
+      "https://github.com/YOUR_GITHUB_USERNAME"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">ICG-MVSNet: Learning Intra-view and Cross-view Relationships for Guidance in Multi-View Stereo</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><a href="https://yuhsihu.github.io" target="_blank">Yuxi Hu</a><sup>1</sup>,</span>
+              <span class="author-block"><a href="https://halajun.github.io" target="_blank">Jun Zhang</a><sup>1</sup>,</span>
+              <span class="author-block"><a href="https://www.doublez.site" target="_blank">Zhe Zhang</a><sup>2</sup>,</span>
+              <span class="author-block"><a href="https://scholar.google.com/citations?user=kfeLdXsAAAAJ&hl=en" target="_blank">Rafael Weilharter</a><sup>1</sup>,</span>
+              <span class="author-block"><a href="https://yuchenrao.github.io" target="_blank">Yuchen Rao</a><sup>1</sup>,</span>
+              <span class="author-block"><a href="https://easonchen99.github.io/Homepage/" target="_blank">Kuangyi Chen</a><sup>1</sup>,</span>
+              <span class="author-block"><a href="https://scholar.google.com/citations?user=Qf-_DhUAAAAJ&hl=en" target="_blank">Runze Yuan</a><sup>1</sup>,</span>
+              <span class="author-block"><a href="https://scholar.google.com/citations?user=M0boL5kAAAAJ&hl=en" target="_blank">Friedrich Fraundorfer</a><sup>1</sup>,</span>
+            </div>
+
+                  <div class="is-size-5 publication-authors"><span class="author-block">
+                    <sup>1</sup> Graz University of Technology
+                    &nbsp;&nbsp;
+                    <sup>2</sup> Peking University
+                    <br>ICME 2025 Oral</span>
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                      <span class="link-block">
+                        <a href="https://ieeexplore.ieee.org/abstract/document/11209443" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+
+                  <span class="link-block">
+                    <a href="https://github.com/YuhsiHu/ICG-MVSNet" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2503.21525" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+          Multi-view Stereo (MVS) aims to estimate depth and reconstruct 3D point clouds from a series of overlapping images. Recent learning-based MVS frameworks overlook the geometric information embedded in features and correlations, leading to weak cost matching. In this paper, we propose ICG-MVSNet, which explicitly integrates intra-view and cross-view relationships for depth estimation. Specifically, we develop an intra-view feature fusion module that leverages the feature coordinate correlations within a single image to enhance robust cost matching. Additionally, we introduce a lightweight cross-view aggregation module that efficiently utilizes the contextual information from volume correlations to guide regularization. Our method is evaluated on the DTU dataset and Tanks and Temples benchmark, consistently achieving competitive performance against state-of-the-art works, while requiring lower computational resources.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+<!-- Pipeline -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Pipeline</h2>
+
+    <div class="content has-text-centered">
+      <img
+        src="static/images/architecture.jpg"
+        alt="The overall architecture of ICG-MVSNet"
+        style="width: 100%; max-width: 1000px;"
+        loading="lazy">
+
+      <p class="has-text-justified" style="margin-top: 1.25rem;">
+        <strong>The overall architecture.</strong>
+        Our method is a coarse-to-fine framework that estimates depths from low resolution
+        stage ℓ to high resolution stage ℓ+1, where ℓ = 0, 1, 2, resulting in a total of
+        4 stages. Features of reference and source images are extracted by a feature pyramid network with the help of <strong>IVF</strong>,
+        whose details are illustrated in (a). The source image features are warped into the
+        D frustum planes of the reference camera and an element-wise multiplication is used
+        to correlate each source image with the reference image. These correlations are
+        aggregated into a single cost volume <strong>C</strong>. In finer stages, namely stage
+        1, 2, and 3, both current and previous stage correlations are used in <strong>CVA</strong>,
+        whereas in stage 0, the cost volume is not updated due to the absence of contextual
+        correlations from a previous stage. Details of this process are illustrated in (b)
+        and (c). Regularization with 3D CNNs yields the probability volume <strong>P</strong>,
+        from which the depth hypothesis with the highest probability is selected for the
+        final depth map. Depth maps from multiple viewpoints are fused into a point cloud in
+        a non-learnable process.
+      </p>
+    </div>
+  </div>
+</section>
+<!-- End pipeline -->
+
+<!-- Image carousel -->
+<section class="hero is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+       <div class="item">
+        <img src="static/images/runtime_memory_horizontal.jpg" alt="First research result visualization" loading="lazy"/>
+        <h2 class="subtitle has-text-centered">
+          Comparison with state-of-the-art methods in runtime and GPU consumption on DTU.
+        </h2>
+      </div>
+      <div class="item">
+        <img src="static/images/dtu-visual.jpg" alt="Second research result visualization" loading="lazy"/>
+        <h2 class="subtitle has-text-centered">
+          Qualitative comparison with other methods on DTU.
+        </h2>
+      </div>
+      <div class="item">
+        <img src="static/images/dtu-pointcloud.jpg" alt="Third research result visualization" loading="lazy"/>
+        <h2 class="subtitle has-text-centered">
+         Point clouds reconstructed from DTU dataset.
+       </h2>
+     </div>
+     <div class="item">
+      <img src="static/images/tnt-pointcloud.jpg" alt="Fourth research result visualization" loading="lazy"/>
+      <h2 class="subtitle has-text-centered">
+        Point clouds reconstructed from Tanks and Temples dataset.
+      </h2>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+<!-- End image carousel -->
+
+<!-- Quantitative results -->
+<section class="section hero is-light" id="quantitative-results">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Quantitative Results</h2>
+
+    <h3 class="title is-4 has-text-centered" style="margin-top: 2rem;">DTU</h3>
+
+    <p class="has-text-justified">
+      <strong>Quantitative comparison on DTU.</strong>
+      * means MVSTER is trained on full-resolution images. The colors indicate rankings:
+      red represents the best result, orange the second best, and yellow the third best.
+    </p>
+
+    <div class="table-container">
+      <table class="table is-bordered is-striped is-hoverable is-fullwidth has-text-centered dtu-table">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Method</th>
+            <th>Acc. ↓ <br><span class="unit">(mm)</span></th>
+            <th>Comp. ↓ <br><span class="unit">(mm)</span></th>
+            <th>Overall ↓ <br><span class="unit">(mm)</span></th>
+            <th>Time ↓ <br><span class="unit">(s)</span></th>
+            <th>GPU ↓ <br><span class="unit">(GB)</span></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td rowspan="2">Traditional</td>
+            <td>Gipuma</td>
+            <td class="rank-1">0.283</td>
+            <td>0.873</td>
+            <td>0.578</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>COLMAP</td>
+            <td>0.400</td>
+            <td>0.664</td>
+            <td>0.532</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+
+          <tr>
+            <td rowspan="11">Learning-based</td>
+            <td>R-MVSNet</td>
+            <td>0.383</td>
+            <td>0.452</td>
+            <td>0.417</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>CasMVSNet</td>
+            <td>0.325</td>
+            <td>0.385</td>
+            <td>0.355</td>
+            <td>0.49</td>
+            <td>5.4</td>
+          </tr>
+          <tr>
+            <td>CVP-MVSNet</td>
+            <td class="rank-2">0.296</td>
+            <td>0.406</td>
+            <td>0.351</td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>PatchmatchNet</td>
+            <td>0.427</td>
+            <td>0.277</td>
+            <td>0.352</td>
+            <td>0.25</td>
+            <td class="rank-1">2.9</td>
+          </tr>
+          <tr>
+            <td>EPP-MVSNet</td>
+            <td>0.413</td>
+            <td>0.296</td>
+            <td>0.355</td>
+            <td>0.52</td>
+            <td>8.2</td>
+          </tr>
+          <tr>
+            <td>CDS-MVSNet</td>
+            <td>0.352</td>
+            <td>0.280</td>
+            <td>0.316</td>
+            <td>0.40</td>
+            <td>4.5</td>
+          </tr>
+          <tr>
+            <td>NP-CVP-MVSNet</td>
+            <td>0.356</td>
+            <td>0.275</td>
+            <td>0.315</td>
+            <td>1.20</td>
+            <td>6.0</td>
+          </tr>
+          <tr>
+            <td>UniMVSNet</td>
+            <td>0.352</td>
+            <td>0.278</td>
+            <td>0.315</td>
+            <td>0.29</td>
+            <td class="rank-3">3.3</td>
+          </tr>
+          <tr>
+            <td>TransMVSNet</td>
+            <td class="rank-3">0.321</td>
+            <td>0.289</td>
+            <td>0.305</td>
+            <td>0.99</td>
+            <td>3.8</td>
+          </tr>
+          <tr>
+            <td>MVSTER*</td>
+            <td>0.340</td>
+            <td class="rank-3">0.266</td>
+            <td class="rank-3">0.303</td>
+            <td class="rank-2">0.17</td>
+            <td>4.5</td>
+          </tr>
+          <tr>
+            <td>GeoMVSNet</td>
+            <td>0.331</td>
+            <td class="rank-2">0.259</td>
+            <td class="rank-2">0.295</td>
+            <td class="rank-3">0.26</td>
+            <td>5.9</td>
+          </tr>
+
+          <tr class="ours-row">
+            <td></td>
+            <td><strong>Ours</strong></td>
+            <td>0.327</td>
+            <td class="rank-1">0.251</td>
+            <td class="rank-1"><strong>0.289</strong></td>
+            <td class="rank-1"><strong>0.13</strong></td>
+            <td class="rank-2">3.2</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="title is-4 has-text-centered" style="margin-top: 2rem;">Tanks and Temples</h3>
+
+<p class="has-text-justified">
+  <strong>Quantitative comparison on Tanks and Temples.</strong>
+  The colors indicate rankings: red represents the best result, orange the second best,
+  and yellow the third best.
+</p>
+
+<div class="table-container">
+  <table class="table is-bordered is-striped is-hoverable is-fullwidth has-text-centered tnt-table">
+    <thead>
+      <tr>
+        <th rowspan="2">Method</th>
+        <th colspan="9">Scene</th>
+      </tr>
+      <tr>
+        <th>Mean ↑</th>
+        <th>Family</th>
+        <th>Francis</th>
+        <th>Horse</th>
+        <th>L.H.</th>
+        <th>M60</th>
+        <th>Panther</th>
+        <th>P.G.</th>
+        <th>Train</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>COLMAP</td>
+        <td>42.14</td>
+        <td>50.41</td>
+        <td>22.25</td>
+        <td>25.63</td>
+        <td>56.43</td>
+        <td>44.83</td>
+        <td>46.97</td>
+        <td>48.53</td>
+        <td>42.04</td>
+      </tr>
+
+      <tr>
+        <td>CasMVSNet</td>
+        <td>56.42</td>
+        <td>76.36</td>
+        <td>58.45</td>
+        <td>46.20</td>
+        <td>55.53</td>
+        <td>56.11</td>
+        <td>54.02</td>
+        <td>58.17</td>
+        <td>46.56</td>
+      </tr>
+
+      <tr>
+        <td>PatchmatchNet</td>
+        <td>53.15</td>
+        <td>66.99</td>
+        <td>52.64</td>
+        <td>43.24</td>
+        <td>54.87</td>
+        <td>52.87</td>
+        <td>49.54</td>
+        <td>54.21</td>
+        <td>50.81</td>
+      </tr>
+
+      <tr>
+        <td>UniMVSNet</td>
+        <td class="rank-3">64.36</td>
+        <td>81.20</td>
+        <td class="rank-3">66.43</td>
+        <td>53.11</td>
+        <td class="rank-3">63.46</td>
+        <td class="rank-1">66.09</td>
+        <td class="rank-2">64.84</td>
+        <td class="rank-3">62.23</td>
+        <td>57.53</td>
+      </tr>
+
+      <tr>
+        <td>TransMVSNet</td>
+        <td>63.52</td>
+        <td class="rank-3">80.92</td>
+        <td>65.83</td>
+        <td class="rank-1">56.94</td>
+        <td>62.54</td>
+        <td>63.06</td>
+        <td>60.00</td>
+        <td>60.20</td>
+        <td class="rank-2">58.67</td>
+      </tr>
+
+      <tr>
+        <td>MVSTER</td>
+        <td>60.92</td>
+        <td>80.21</td>
+        <td>63.51</td>
+        <td>52.30</td>
+        <td>61.38</td>
+        <td>61.47</td>
+        <td>58.16</td>
+        <td>58.98</td>
+        <td>51.38</td>
+      </tr>
+
+      <tr>
+        <td>GeoMVSNet</td>
+        <td class="rank-1">65.89</td>
+        <td class="rank-2">81.64</td>
+        <td class="rank-2">67.53</td>
+        <td>55.78</td>
+        <td class="rank-1">68.02</td>
+        <td class="rank-2">65.49</td>
+        <td class="rank-1">67.19</td>
+        <td class="rank-1">63.27</td>
+        <td class="rank-3">58.22</td>
+      </tr>
+
+      <tr class="ours-row">
+        <td><strong>Ours</strong></td>
+        <td class="rank-2">65.53</td>
+        <td class="rank-1">81.73</td>
+        <td class="rank-1">68.92</td>
+        <td class="rank-2">56.59</td>
+        <td class="rank-2">66.10</td>
+        <td class="rank-3">64.86</td>
+        <td class="rank-3">64.41</td>
+        <td class="rank-2">62.33</td>
+        <td class="rank-1">59.26</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  </div>
+</section>
+<!-- End quantitative results -->
+
+
+<!-- Paper poster -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title">Poster</h2>
+
+      <iframe  src="static/pdfs/ICME2025_ICG_MVSNet_poster.pdf" width="100%" height="800">
+          </iframe>
+        
+      </div>
+    </div>
+  </section>
+<!--End paper poster -->
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@inproceedings{hu2025icg,
+  title={ICG-MVSNet: Learning Intra-view and Cross-view Relationships for Guidance in Multi-View Stereo},
+  author={Hu, Yuxi and Zhang, Jun and Zhang, Zhe and Weilharter, Rafael and Rao, Yuchen and Chen, Kuangyi and Yuan, Runze and Fraundorfer, Friedrich},
+  booktitle={IEEE International Conference on Multimedia and Expo (ICME)},
+  year={2025}
+}</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+<!-- End of Statcounter Code -->
+
+  </body>
+  </html>
