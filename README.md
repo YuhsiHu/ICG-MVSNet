@@ -4,11 +4,11 @@
     <a href="https://yuhsihu.github.io" target='_blank'>Yuxi Hu</a>, 
     <a href="https://halajun.github.io/" target='_blank'>Jun Zhang</a>,  
     <a href="https://www.doublez.site" target='_blank'>Zhe Zhang</a>, 
-    <a href="https://www.tugraz.at/institute/icg/research/team-fraundorfer/people/rafael-weilharter" target='_blank'>Rafael Weilharter</a>, 
+    <a href="https://scholar.google.com/citations?user=kfeLdXsAAAAJ&hl=en" target='_blank'>Rafael Weilharter</a>, 
     <a href="https://yuchenrao.github.io/" target='_blank'>Yuchen Rao</a>, 
     <a href="https://easonchen99.github.io/Homepage/" target='_blank'>Kuangyi Chen</a>, 
     <a href="https://scholar.google.com/citations?user=Qf-_DhUAAAAJ&hl=en" target='_blank'>Runze Yuan</a>, 
-    <a href="https://www.tugraz.at/institute/icg/research/team-fraundorfer/people/friedrich-fraundorfer/" target='_blank'>Friedrich Fraundorfer</a>*
+    <a href="https://scholar.google.com/citations?user=M0boL5kAAAAJ&hl=en" target='_blank'>Friedrich Fraundorfer</a>*
 </div>
 
 <br />
@@ -17,6 +17,7 @@
 
 ![Publication](https://img.shields.io/badge/2025-ICME-2978b5)
 [![Paper](http://img.shields.io/badge/arxiv-arxiv.2503.21525-B31B1B?logo=arXiv&logoColor=green)](https://arxiv.org/abs/2503.21525)
+[![Project Page](https://img.shields.io/badge/Project-Page-4c8eda?logo=githubpages&logoColor=white)](https://yuhsihu.github.io/ICG-MVSNet/)
 ![Pytorch](https://img.shields.io/badge/PyTorch-ee4c2c?logo=pytorch&logoColor=white)
 
 </div>
