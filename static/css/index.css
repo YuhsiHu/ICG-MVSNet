@@ -783,3 +783,18 @@ a:focus {
 .ours-row {
   font-weight: 600;
 }
+
+.icg-i {
+  color: #c0392b;
+  font-weight: 800;
+}
+
+.icg-c {
+  color: #2980b9;
+  font-weight: 800;
+}
+
+.icg-g {
+  color: #27ae60;
+  font-weight: 800;
+}
